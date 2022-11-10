@@ -1,0 +1,23 @@
+/* body & main containers */
+@use 'styles/main_layout';
+
+/* load CSS resets after main_layout bacause main_layout sets the theme CSS variables */
+@use 'styles/resets';
+
+/* main movies lists and containers */
+@use 'styles/movie-containers';
+
+/* movie card */
+@use 'styles/movie_card';
+
+/* movie form */
+@use 'styles/movie_form';
+
+/* input with error message */
+@use 'styles/input';
+
+/* search bar */
+@use 'styles/search_bar';
+
+/* modal */
+@use 'styles/modal';

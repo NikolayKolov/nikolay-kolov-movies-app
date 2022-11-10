@@ -1,0 +1,13 @@
+@mixin border-solid($color, $width: 1px) {
+    border: $width solid $color;
+}
+
+@mixin center-vertical {
+    display: flex;
+    align-items: center;
+}
+
+@mixin center-content {
+    @include center-vertical;
+    justify-content: center;
+}

@@ -1,0 +1,48 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+label.input--label {
+    font-size: 1.25rem;
+
+    span.input--label__required {
+        color: $color-required;
+        margin-left: 0.25rem;
+    }
+}
+
+input[type='text'].form--input {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+    display: inline-block;
+    @include border-solid($color: var(--clr-light), $width: 2px);
+    border-radius: 0.25rem;
+
+    &:active,
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 4px white;
+    }
+
+    &.form--input__error {
+        @include border-solid($color: $color-error, $width: 3px);
+
+        &:active,
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 4px $color-error;
+        }
+    }
+}
+
+div.input--container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    div.input--error-message {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $color-error-message;
+        margin-left: 1.75rem;
+    }
+}

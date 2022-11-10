@@ -1,0 +1,268 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+div.movies-container {
+    div.movie-card {
+        height: 6.5rem;
+        position: relative;
+        overflow: hidden;
+
+        /*  on action delete movie, an overlay will appear
+            over the movie card as a prompt */
+        div.movie-card--delete-overlay {
+            position: absolute;
+            left: -100%;
+            height: 100%;
+            width: 100%;
+            font-size: 1.125rem;
+            font-weight: 500;
+            @include center-vertical;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 1rem;
+            border-radius: 4px;
+            color: $delete-overlay-color;
+            background-color: $delete-overlay-background-color;
+            @include border-solid($color: $delete-overlay-border-color);
+            z-index: 5;
+            transition: left 0.2s ease-in-out;
+
+            /* slide overlay from the left */
+            &.movie-card--delete-overlay__display {
+                left: 0;
+            }
+
+            div.actions {
+                display: flex;
+                column-gap: 1.5rem;
+                justify-content: space-between;
+                color: #ffffff;
+
+                div.action {
+                    min-width: 2rem;
+                    padding: 0.25rem 1rem;
+                    border-radius: 1.25rem;
+
+                    &.action__confirm {
+                        background-color: $action-delete-background-color;
+                        @include border-solid($color: $action-delete-background-color, $width: 2px);
+
+                        &:hover {
+                            background-color: $action-delete-background-color_hover;
+                        }
+                    }
+
+                    &.action__cancel {
+                        background-color: $action-cancel-background-color;
+                        @include border-solid($color: $action-cancel-background-color, $width: 2px);
+
+                        &:hover {
+                            background-color: $action-cancel-background-color_hover;
+                        }
+                    }
+                }
+            }
+        }
+
+        article {
+            background-color: var(--bg-clr-crd);
+            @include border-solid($color: $card-border-color);
+            border-radius: 0.5rem;
+            height: 5.5rem;
+            margin: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+
+            %overflow-ellipsis {
+                overflow-x: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            div.movie-card--info {
+                display: flex;
+                flex-direction: column;
+                padding-left: 6rem;
+                width: 100%;
+                overflow-y: hidden;
+
+                span.movie-title {
+                    font-size: 1.75rem;
+                    font-weight: 500;
+                    @extend %overflow-ellipsis;
+                }
+
+                .info--container__bottom {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .info--details {
+                        display: flex;
+                        flex-direction: column;
+                        overflow-x: hidden;
+
+                        span.movie-director,
+                        span.movie-distributor {
+                            font-size: 0.75rem;
+                            color: var(--clr-light);
+                            font-weight: 500;
+                            @extend %overflow-ellipsis;
+                        }
+
+                        %movie-label-display {
+                            width: 6rem;
+                            display: inline-block;
+                            font-weight: 400;
+                        }
+
+                        span.movie-distributor {
+                            margin-top: -1px;
+
+                            span.movie-distributor--label {
+                                @extend %movie-label-display;
+                            }
+                        }
+
+                        span.movie-director {
+                            span.movie-director--label {
+                                @extend %movie-label-display;
+                            }
+                        }
+                    }
+
+                    .info--actions {
+                        @include center-vertical;
+                        column-gap: 1rem;
+
+                        .action {
+                            padding: 0.25rem 1rem;
+                            border-radius: 1rem;
+                            @include center-vertical;
+
+                            img {
+                                filter: Invert(1);
+                                height: 1rem;
+                                padding-right: 0.5rem;
+                            }
+
+                            &.action__delete {
+                                background-color: $action-delete-background-color;
+
+                                &:hover {
+                                    background-color: $action-delete-background-color_hover;
+                                }
+                            }
+
+                            &.action__edit {
+                                background-color: $action-edit-background-color;
+
+                                &:hover {
+                                    background-color: $action-edit-background-color_hover;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        div.movie-rating {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $card-color;
+            position: absolute;
+            width: 7.5rem;
+            height: 3.75rem;
+            padding-left: 1.75rem;
+            left: 0;
+            top: 1.5rem;
+
+            &::before {
+                content: '';
+                width: 1rem;
+                display: block;
+                height: 1.25rem;
+                position: absolute;
+                left: 0;
+                top: -1.25rem;
+                background-color: inherit;
+                opacity: 0.5;
+                transform-origin: bottom left;
+                transform: rotate(60deg);
+                z-index: -1;
+            }
+
+            @each $rating, $color in $rating-colors {
+                &.movie-rating__#{$rating} {
+                    background-color: $color;
+                }
+            }
+
+            span.movie-rating--title {
+                font-size: 1rem;
+            }
+
+            span.movie-rating--votes {
+                display: block;
+                font-size: 0.75rem;
+                line-height: 0.75rem;
+            }
+        }
+
+        span.highlight {
+            background-color: $action-cancel-background-color_hover;
+            color: var(--bg-clr-crd);
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    div.movies-container {
+        div.movie-card {
+            div.movie-rating {
+                position: relative;
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.5rem;
+                border-radius: 0.5rem;
+                padding: 0;
+                left: unset;
+                top: unset;
+                align-self: center;
+                @include center-content;
+
+                span.movie-rating--votes {
+                    display: none;
+                }
+
+                span.movie-rating--title {
+                    display: none;
+                }
+            }
+
+            article {
+                margin: 0 0;
+                padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+                div.movie-card--info {
+                    padding-left: 1rem;
+
+                    .info--container__bottom {
+                        .info--actions {
+                            .action {
+                                span {
+                                    display: none;
+                                }
+
+                                img {
+                                    padding-right: unset;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

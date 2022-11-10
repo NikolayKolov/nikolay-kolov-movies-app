@@ -1,0 +1,72 @@
+$base-font-size: 16px;
+$base-font-family: Helvetica, sans-serif;
+
+$dark-text-color: #ffffff;
+$light-text-color: #000000;
+$dark-text-color-1: #d3d3d3;
+$light-text-color-1: #313131;
+$dark-background-color: #212121;
+$light-background-color: #edf2fb;
+$dark-background-color-1: #383838;
+$light-background-color-1: #c1d3fe;
+$dark-background-color-2: #4a4a4a;
+$light-background-color-2: #ccdbfd;
+$dark-background-color-3: #5f5f5f;
+$light-background-color-3: #e2eafc;
+$dark-card-background-color: #47505e;
+$light-card-background-color: #ffffff;
+$dark-movie-list-background-color: transparent;
+$light-movie-list-background-color: #a3bbf4;
+$dark-svg-invert: 1;
+$light-svg-invert: 0.2;
+
+$card-border-color: #c7d0e0;
+$card-color: #252525;
+
+$modal-border-color: #a8a8a8;
+$modal-border-shadow-color: #d8d8d8;
+$dark-modal-action-hover-color: #525252;
+
+$header-height: 4.5rem;
+$header-width: 1800px;
+$header-links-height: 2rem;
+$footer-height: 5rem;
+
+$action-delete-background-color: #dc3545;
+$action-delete-background-color_hover: #c82333;
+$action-edit-background-color: #17a2b8;
+$action-edit-background-color_hover: #138496;
+$action-add-background-color: #119b21;
+$action-add-background-color_hover: #15b127;
+$action-cancel-background-color: #c4a735;
+$action-cancel-background-color_hover: #e0a800;
+
+$scrollbar-color: #f5f5f5;
+$scrollbar-thumb-color: #a8a8a8;
+
+$delete-overlay-color: #842029;
+$delete-overlay-background-color: #f8d7da;
+$delete-overlay-border-color: #f5c2c7;
+
+$color-required: #d00000;
+$color-error: #ff3300;
+$color-error-message: #d30000;
+
+$link-color: #6aa1d1;
+
+$search-inner-border-color: #bec1c4;
+$search-bar-color: #212121;
+
+/* a map for the colors for each IMDB movie rating */
+$rating-colors: (
+    '1': rgb(255, 0, 51),
+    '2': rgb(255, 64, 51),
+    '3': rgb(255, 128, 51),
+    '4': rgb(255, 192, 51),
+    '5': rgb(255, 255, 51),
+    '6': rgb(192, 255, 51),
+    '7': rgb(128, 255, 51),
+    '8': rgb(64, 255, 51),
+    '9': rgb(0, 255, 0),
+    '10': rgb(0, 255, 0),
+);

@@ -1,0 +1,36 @@
+@use 'variables' as *;
+
+/*
+  CSS resets, rem setting
+*/
+html {
+    font-size: $base-font-size;
+    font-family: $base-font-family;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    color: var(--clr);
+}
+
+ol,
+ul {
+    list-style: none;
+}

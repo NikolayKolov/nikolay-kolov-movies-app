@@ -1,0 +1,85 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #4a4a4a;
+    opacity: 0;
+    z-index: 0;
+    transition: all 0.2s ease-in;
+    pointer-events: none;
+
+    &.show {
+        z-index: 20;
+        opacity: 0.9;
+        pointer-events: initial;
+    }
+}
+
+div.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    max-width: 768px;
+    width: 50%;
+    min-width: 480px;
+    background-color: var(--bg-clr-mdl);
+    z-index: 0;
+    @include border-solid($color: $modal-border-color);
+    border-radius: 1rem;
+    box-shadow: 0 0 4px 4px $modal-border-shadow-color;
+    transition: all 0.2s ease-in;
+    opacity: 0;
+    pointer-events: none;
+
+    &.show {
+        transform: translate(-50%, -50%);
+        z-index: 21;
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    div.modal--header {
+        height: 2rem;
+        border-radius: 1rem 1rem 0 0;
+        background-color: var(--bg-clr-light);
+        border-bottom: $modal-border-color 1px solid;
+        box-shadow: 0 3px 3px -2px $modal-border-shadow-color;
+        @include center-vertical;
+        justify-content: space-between;
+        padding: 0 1rem;
+        height: 3rem;
+        font-size: 1.25rem;
+    }
+
+    div.modal--child {
+        min-height: 4rem;
+        padding: 1rem;
+    }
+
+    div.buttons {
+        display: flex;
+        margin-top: 2rem;
+    }
+
+    div.button {
+        @include border-solid($color: $modal-border-color);
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+    }
+
+    div.button:hover {
+        background-color: var(--bg-clr-lighter);
+    }
+}
+
+@media (max-width: 640px) {
+    div.modal-content {
+        min-width: 80vw;
+    }
+}

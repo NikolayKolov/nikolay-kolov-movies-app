@@ -1,0 +1,68 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "react-hooks"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:jest/recommended",
+        "plugin:testing-library/react"
+    ],
+    "env": {
+        "shared-node-browser": true,
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/prop-types": "off",
+        "@typescript-eslint/indent": ["error", 4],
+        "jsx-quotes": ["warn", "prefer-double"],
+        "no-console": "error",
+        "no-duplicate-imports": "warn",
+        "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+        "object-curly-spacing": ["warn", "always"],
+        "quotes": ["warn", "double"],
+        "react/jsx-curly-spacing": [
+            "warn",
+            {
+                "allowMultiline": true,
+                "children": {
+                    "when": "never"
+                },
+                "spacing": {
+                    "objectLiterals": "always"
+                },
+                "when": "never"
+            }
+        ],
+        "react/jsx-filename-extension": [
+            "error",
+            {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        ],
+        "react/jsx-indent": [
+            "error",
+            4,
+            {
+                "checkAttributes": true,
+                "indentLogicalExpressions": true
+            }
+        ],
+        "react/jsx-indent-props": ["error", 4]
+    },
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "detect"
+        }
+    }
+}

@@ -1,0 +1,81 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+section.movie-form {
+    max-width: 1000px;
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    span.link__index {
+        color: $link-color;
+        cursor: pointer;
+    }
+
+    div.form-row {
+        display: flex;
+        margin-bottom: 1.5rem;
+
+        label {
+            min-width: 18rem;
+            margin-top: 0.5rem;
+        }
+    }
+
+    div.form-actions {
+        border-top: 2px solid var(--clr);
+        height: 6rem;
+        @include center-vertical;
+        flex-direction: row;
+        column-gap: 1rem;
+
+        div.action {
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            @include border-solid($color: var(--clr), $width: 2px);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+
+            &.action__submit {
+                background-color: $action-add-background-color;
+
+                &:hover {
+                    background-color: $action-add-background-color_hover;
+                }
+            }
+
+            &.action__cancel {
+                background-color: $action-cancel-background-color;
+
+                &:hover {
+                    background-color: $action-cancel-background-color_hover;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    section.movie-form {
+        div.form-row {
+            flex-direction: column;
+            margin-bottom: 0.5rem;
+
+            div.input--container div.input--error-message {
+                margin-left: 1.25rem;
+            }
+
+            label.input--label {
+                margin-bottom: 0.25rem;
+            }
+
+            input[type='text'].form--input {
+                padding: 0.5rem 1rem;
+            }
+        }
+    }
+}

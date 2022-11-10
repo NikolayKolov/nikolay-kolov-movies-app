@@ -1,0 +1,194 @@
+/* root containers settings */
+@use 'variables' as *;
+@use 'mixins' as *;
+
+div#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    --bg-clr: #{$dark-background-color};
+    --bg-clr-light: #{$dark-background-color-1};
+    --bg-clr-lighter: #{$dark-background-color-2};
+    --bg-clr-mdl: #{$dark-background-color-3};
+    --bg-clr-crd: #{$dark-card-background-color};
+    --bg-clr-mvlst: #{$dark-movie-list-background-color};
+    --clr: #{$dark-text-color};
+    --clr-light: #{$dark-text-color-1};
+    --svg-fltr-invert: #{$dark-svg-invert};
+    background-color: var(--bg-clr);
+    color: var(--clr);
+
+    &[data-theme='light'] {
+        --bg-clr: #{$light-background-color};
+        --bg-clr-light: #{$light-background-color-1};
+        --bg-clr-lighter: #{$light-background-color-2};
+        --bg-clr-mdl: #{$light-background-color-3};
+        --bg-clr-crd: #{$light-card-background-color};
+        --bg-clr-mvlst: #{$light-movie-list-background-color};
+        --clr: #{$light-text-color};
+        --clr-light: #{$light-text-color-1};
+        --svg-fltr-invert: #{$light-svg-invert};
+        background-color: var(--bg-clr);
+        color: var(--clr);
+    }
+}
+
+/* header, footer & nav */
+header {
+    @include center-content;
+    text-transform: uppercase;
+    background-color: var(--bg-clr-light);
+
+    div.header--container {
+        height: $header-height;
+        width: $header-width;
+        @include center-vertical;
+        justify-content: space-between;
+
+        span.logo {
+            font-size: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+
+        .header--container__right {
+            @include center-vertical;
+        }
+
+        .theme {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 1rem;
+
+            img {
+                filter: Invert(var(--svg-fltr-invert));
+
+                &.spin {
+                    animation-name: SpinImage;
+                    animation-duration: 0.2s;
+                    animation-timing-function: ease-in-out;
+                }
+
+                @keyframes SpinImage {
+                    from {
+                        transform: rotate(0deg);
+                    }
+                    to {
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    @include center-content;
+    height: $footer-height;
+    background-color: var(--bg-clr-light);
+}
+
+header,
+footer {
+    nav.links {
+        @include center-vertical;
+        justify-content: space-between;
+
+        ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+
+            li {
+                color: inherit;
+                padding: 1rem 0.5rem;
+
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+header {
+    nav.links {
+        li {
+            div {
+                @include center-vertical;
+                height: $header-links-height;
+                padding: 0 1rem;
+                border-radius: 0.5rem;
+
+                &:hover {
+                    background-color: var(--bg-clr-lighter);
+                }
+
+                &.link--sign-in {
+                    background-color: $action-add-background-color;
+
+                    &:hover {
+                        background-color: $action-add-background-color_hover;
+                    }
+                }
+
+                p {
+                    text-decoration: capitalize;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    nav.links {
+        div.icons {
+            @include center-vertical;
+            padding: 0rem 1rem;
+
+            img {
+                width: 2rem;
+                height: 2rem;
+                margin-right: 0.5rem;
+                filter: Invert(var(--svg-fltr-invert));
+            }
+
+            p {
+                font-size: 1.25rem;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+
+/* main section */
+main {
+    flex-grow: 1;
+    padding-top: 1rem;
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    height: calc(100vh - ($header-height + $footer-height));
+    overflow-x: hidden;
+
+    > section {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-height: 768px) {
+    main {
+        height: unset;
+    }
+}
+
+@media (max-width: 800px) {
+    footer nav.links li p {
+        display: none;
+    }
+}
